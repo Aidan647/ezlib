@@ -363,7 +363,7 @@ function ezlib.recipe.find.ingredient (value)
 	local recipe = data.raw.recipe
 	local list = {}
 	for x,ing in pairs(recipe) do
-		if ezlib.recipe.ingredient.get({recipe_name = recipe[x].name, ingredient = value}) do
+		if ezlib.recipe.ingredient.get({recipe_name = recipe[x].name, ingredient = value}) then
 			table.insert(list, recipe[x].name)
 		end 
 	end
@@ -377,7 +377,7 @@ function ezlib.recipe.find.result (value)
 	local recipe = data.raw.recipe
 	local list = {}
 	for x,ing in pairs(recipe) do
-		if ezlib.recipe.result.get({recipe_name = recipe[x].name, ingredient = value}) do
+		if ezlib.recipe.result.get({recipe_name = recipe[x].name, ingredient = value}) then
 			table.insert(list, recipe[x].name)
 		end 
 	end
