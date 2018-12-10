@@ -1,0 +1,10 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.0.2
+Date: 10.12.2018
+  Changes:
+    - function ezlib.item.get.list ()
+    - function ezlib.recipe.get.list ()
+    - function ezlib.tech.get.list ()
+    - function ezlib.tbl.add(list1, list2)
+    - function ezlib.tbl.remove(list1, list2)
+---------------------------------------------------------------------------------------------------

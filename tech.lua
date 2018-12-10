@@ -2,6 +2,7 @@ ezlib.tech = {}
 ezlib.tech.add = {}
 ezlib.tech.find = {}
 ezlib.tech.remove = {}
+ezlib.tech.get = {}
 
 
 function ezlib.tech.add.unlock_recipe (value, frecipe)
@@ -116,4 +117,16 @@ function ezlib.tech.remove.prerequisites (value, ftech)
 	else
 		log("Tech with name " .. value .. " not found")
 	end
+end
+
+function ezlib.tech.get.list ()
+	local tech = data.raw.technology
+	local list = {}
+	for x,ing in pairs(tech) do
+		table.insert(list, technology[x].name)
+	end
+	if #list == 1 then
+		list = list[1]
+	end
+	return list
 end

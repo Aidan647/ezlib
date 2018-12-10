@@ -2,6 +2,7 @@ ezlib.recipe = {}
 ezlib.recipe.ingredient = {}
 ezlib.recipe.result = {}
 ezlib.recipe.find = {}
+ezlib.recipe.get = {}
 
 function ezlib.recipe.ingredient.remove (value, ingredient)
 	local recipe = table.deepcopy(data.raw.recipe[value])
@@ -380,6 +381,18 @@ function ezlib.recipe.find.result (value)
 		if ezlib.recipe.result.get({recipe_name = recipe[x].name, ingredient = value}) then
 			table.insert(list, recipe[x].name)
 		end 
+	end
+	if #list == 1 then
+		list = list[1]
+	end
+	return list
+end
+
+function ezlib.recipe.get.list ()
+	local recipe = data.raw.recipe
+	local list = {}
+	for x,ing in pairs(recipe) do
+		table.insert(list, recipe[x].name)
 	end
 	if #list == 1 then
 		list = list[1]
