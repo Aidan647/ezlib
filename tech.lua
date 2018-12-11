@@ -119,11 +119,50 @@ function ezlib.tech.remove.prerequisites (value, ftech)
 	end
 end
 
-function ezlib.tech.get.list ()
+function ezlib.tech.get.list (value)
 	local tech = data.raw.technology
 	local list = {}
+	local list = {}
 	for x,ing in pairs(tech) do
-		table.insert(list, technology[x].name)
+		table.insert(list, tech[x].name)
+	end
+	if value ~= nil and type(value) == "table" then
+		for a,ing in pairs(value) do
+			if value[a] ~= nil then
+				if type(value[a]) == "string" then
+					for x,ing2 in ipairs(list) do
+						if tech[list[x]][a] ~= value[a] or tech[list[x]][a] == nil then
+							table.insert(del_list, ing2)
+						end
+					end
+				elseif type(value[a]) == "table" then
+					for b,ing3 in pairs(value[a]) do
+						if type(value[a][b]) == "string" then
+							for c,ing2 in ipairs(list) do
+								if tech[list[x]][a][b] ~= value[a][b]  or tech[list[x]][a][b] == nil then
+									table.insert(del_list, ing2)
+								end
+							end
+						elseif type(value[a][b]) == "table" then
+							log("You can't mine so deap")	
+						else
+							break
+						end
+					end
+				else
+					break
+				end
+			end
+		end
+		del_list = ezlib.tbl.remove(list, del_list)
+		if del_list ~= nil then
+			if #del_list == 1 then
+				del_list = del_list[1]
+			end
+			return del_list
+		else
+			return nil
+		end
 	end
 	if #list == 1 then
 		list = list[1]
