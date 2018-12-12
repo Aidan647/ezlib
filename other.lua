@@ -85,12 +85,12 @@ function ezlib.tbl.add(list1, list2, list3, list4, list5)
 		table.insert(list, list3)
 	end
 
-	if list4 ~= nil and type(list) == "table" then
-		for y,ing in pairs(list) do
+	if list4 ~= nil and type(list4) == "table" then
+		for y,ing in pairs(list4) do
 			table.insert(list, ing)
 		end
-	elseif type(list) == "string" then
-		table.insert(list, list)
+	elseif type(list4) == "string" then
+		table.insert(list, list4)
 	end
 
 	if list5 ~= nil and type(list5) == "table" then
