@@ -1,10 +1,8 @@
 ezlib = {}
-
-
-require("other")
-require("item")
+debug = settings.startup["ez-debug"].value
+require("functions.other")
+require("functions.item")
 --require("prototypes.item")
-require("recipe")
-require("tech")
-require("entity")
-ezlib.log_tbl(ezlib.entity.get.list("assembling-machine"))
+require("functions.recipe")
+require("functions.tech")
+require("functions.entity")

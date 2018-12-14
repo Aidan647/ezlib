@@ -1,4 +1,33 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.0.6
+Date: 14.12.2018
+  Changes:
+    - function ezlib.tech.find.unlock_modifer => log fix
+    - function ezlib.tech.find.unlock_recipe => log fix
+    - Bug fixes
+---------------------------------------------------------------------------------------------------
+Version: 0.0.5
+Date: 13.12.2018
+  New:
+    - function ezlib.add.string1(string1, string2, string3, string4, string5)
+    - debug mode
+  Changes:
+    - function ezlib.recipe.ingredient.remove => ezlib.recipe.remove.ingredient
+    - function ezlib.recipe.ingredient.add => ezlib.recipe.add.ingredient
+    - function ezlib.recipe.ingredient.replace => ezlib.recipe.replace.ingredient 
+    - function ezlib.recipe.ingredient.get => ezlib.recipe.get.ingredient
+    - function ezlib.recipe.result.remove => ezlib.recipe.remove.result
+    - function ezlib.recipe.result.add => ezlib.recipe.add.result
+    - function ezlib.recipe.result.replace => ezlib.recipe.replace.result
+    - function ezlib.recipe.result.get => ezlib.recipe.get.result
+    - function ezlib.log_tbl => ezlib.log.print
+---------------------------------------------------------------------------------------------------
+Version: 0.0.4
+Date: 12.12.2018
+  Changes:
+    - function ezlib.entity.get.list(type,table)
+    - function ezlib.tbl.add(list1, list2, list3, list4, list5) => bug fixes
+---------------------------------------------------------------------------------------------------
 Version: 0.0.3
 Date: 11.12.2018
   Changes:
@@ -10,7 +39,7 @@ Date: 11.12.2018
 ---------------------------------------------------------------------------------------------------
 Version: 0.0.2
 Date: 10.12.2018
-  Changes:
+  New:
     - function ezlib.item.get.list ()
     - function ezlib.recipe.get.list ()
     - function ezlib.tech.get.list ()
