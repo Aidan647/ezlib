@@ -1,10 +1,46 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.0.6
+Version: 0.0.10
+Date: 16.12.2018
+  New:
+    - table ezlib.item.not_item is all items types (Ex. gun)
+    - Changelog in game
+  Improvements:
+    - function ezlib.item.get.list have not_items type
+  Bugfixes:
+    - function ezlib.item.get.list
+---------------------------------------------------------------------------------------------------
+Version: 0.0.9
+Date: 14.12.2018
+  New:
+    - if item dont have icon or icon_size add it
+  Changes:
+    - debug => ezlib.debug
+---------------------------------------------------------------------------------------------------
+Version: 0.0.8
 Date: 14.12.2018
   Changes:
+    - function ezlib.entity.add.falg => ezlib.entity.add.flag
+    - function ezlib.entity.remove.falg => ezlib.entity.remove.flag
+    - function ezlib.item.add.falg => ezlib.item.add.flag
+    - function ezlib.item.remove.falg => ezlib.item.remove.flag
+---------------------------------------------------------------------------------------------------
+Version: 0.0.7
+Date: 14.12.2018
+  New:
+    - function ezlib.entity.add.falg (name, type, flag)
+    - function ezlib.entity.remove.falg (name, type, flag)
+    - function ezlib.item.add.falg (name, flag)
+    - function ezlib.item.remove.falg (name, flag)
+  Bugfixes:
+    - function ezlib.log.print
+  Improvements:
+    - function ezlib.log.print
+---------------------------------------------------------------------------------------------------
+Version: 0.0.6
+Date: 14.12.2018
+  Bugfixes:
     - function ezlib.tech.find.unlock_modifer => log fix
     - function ezlib.tech.find.unlock_recipe => log fix
-    - Bug fixes
 ---------------------------------------------------------------------------------------------------
 Version: 0.0.5
 Date: 13.12.2018
@@ -24,8 +60,9 @@ Date: 13.12.2018
 ---------------------------------------------------------------------------------------------------
 Version: 0.0.4
 Date: 12.12.2018
-  Changes:
+  New:
     - function ezlib.entity.get.list(type,table)
+  Bugfixes:
     - function ezlib.tbl.add(list1, list2, list3, list4, list5) => bug fixes
 ---------------------------------------------------------------------------------------------------
 Version: 0.0.3
@@ -35,6 +72,7 @@ Date: 11.12.2018
     - function ezlib.recipe.get.list () => ezlib.recipe.get.list (table)
     - function ezlib.tech.get.list () => ezlib.tech.get.list (table)
     - function ezlib.tbl.add(list1, list2) => ezlib.tbl.add (list1, list2, list3, list4, list5)
+  Bugfixes:
     - function ezlib.tbl.remove(list1, list2) => bug fixes
 ---------------------------------------------------------------------------------------------------
 Version: 0.0.2
@@ -45,4 +83,3 @@ Date: 10.12.2018
     - function ezlib.tech.get.list ()
     - function ezlib.tbl.add(list1, list2)
     - function ezlib.tbl.remove(list1, list2)
----------------------------------------------------------------------------------------------------

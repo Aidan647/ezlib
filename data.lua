@@ -1,5 +1,4 @@
-ezlib = {}
-debug = settings.startup["ez-debug"].value
+require("functions.list")
 require("functions.other")
 require("functions.item")
 --require("prototypes.item")
