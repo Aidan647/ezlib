@@ -1,10 +1,3 @@
-ezlib.recipe = {}
-ezlib.recipe.add = {}
-ezlib.recipe.replace = {}
-ezlib.recipe.remove = {}
-ezlib.recipe.find = {}
-ezlib.recipe.get = {}
-
 function ezlib.recipe.remove.ingredient (value, ingredient)
 	local print = "ezlib.recipe.remove.ingredient\n---------------------------------------------------------------------------------------------\n"
 	local recipe = table.deepcopy(data.raw.recipe[value])
@@ -43,11 +36,11 @@ function ezlib.recipe.remove.ingredient (value, ingredient)
 		if recipe.normal.ingredients == ingredients_normal and recipe.expensive.ingredients == ingredients_expensive and recipe.ingredients == ingredients then
 			print = print .. "  [Warning] Ingredient " .. ingredient .. " from recipe " .. value .. " wasnt removed.\n"
 		end
-		if debug then
+		if ezlib.debug then
 			log(print .. "---------------------------------------------------------------------------------------------")
 		end
 	else
-		if debug then
+		if ezlib.debug then
 			log(print .. "  [Warning] Recipe with name " .. value .. " not found.\n---------------------------------------------------------------------------------------------")
 		else
 			log("  [Warning] Recipe with name " .. value .. " not found.")
@@ -79,7 +72,7 @@ function ezlib.recipe.add.ingredient (value, fingredient, famount, ftype)
 		end
 	else
 		print = print .. "  [Warning] Recipe with name " .. value .. " not found\n"
-		if not debug then
+		if not ezlib.debug then
 			log("  [Warning] Recipe with name " .. value .. " not found")
 		end
 	end
@@ -186,24 +179,24 @@ function ezlib.recipe.get.ingredient (value)
 		if fingredient ~= 1 then
 			for x,ing in ipairs(out) do
 				if out[x]["name"] == fingredient then
-					if debug then
+					if ezlib.debug then
 						log(print .. "  Renurning true\n---------------------------------------------------------------------------------------------")
 					end
 					return true
 				end
 			end
-			if debug then
+			if ezlib.debug then
 				log(print .. "  Renurning false\n---------------------------------------------------------------------------------------------")
 			end
 			return false
 		else
-			if debug then
+			if ezlib.debug then
 				log(print .. "  Renurning:" .. ezlib.log.print(out, 0) .. "\n---------------------------------------------------------------------------------------------")
 			end
 			return out
 		end
 	else
-		if debug then
+		if ezlib.debug then
 			log(print .. "  [Warning] Recipe with name " .. value .. " not found\n---------------------------------------------------------------------------------------------")
 		else
 			log("  [Warning] Recipe with name " .. value .. " not found")
@@ -262,11 +255,11 @@ function ezlib.recipe.remove.result (value, ingredient)
 				print = print .. "  " .. ingredient .. "Removed from " .. value .. ".\n"
 			end
 		end
-		if debug then
+		if ezlib.debug then
 			log(print .. "---------------------------------------------------------------------------------------------")
 		end
 	else
-		if debug then
+		if ezlib.debug then
 			log(print .. "  [Warning] Recipe with name " .. value .. " not found\n---------------------------------------------------------------------------------------------")
 		else
 			log("  [Warning] Recipe with name " .. value .. " not found")
@@ -326,11 +319,11 @@ function ezlib.recipe.add.result (value, fingredient, famount, ftype)
 			data.raw.recipe[value].results = recipe.results
 			print = print .. "  " .. famount .. "x" .. fingredient .. "added to " .. value .. ".\n"
 		end
-		if debug then
+		if ezlib.debug then
 			log(print .. "---------------------------------------------------------------------------------------------")
 		end
 	else
-		if debug then
+		if ezlib.debug then
 			log(print .. "  [Warning] Recipe with name " .. value .. " not found\n---------------------------------------------------------------------------------------------")
 		else
 			log("  [Warning] Recipe with name " .. value .. " not found")
@@ -451,18 +444,18 @@ function ezlib.recipe.get.result (value)
 		if fingredient ~= 1 then
 			for x,ing in ipairs(out) do
 				if out[x]["name"] == fingredient then
-					if debug then
+					if ezlib.debug then
 						log(print .. "  Renurning false\n---------------------------------------------------------------------------------------------")
 					end
 					return true
 				end
 			end
-			if debug then
+			if ezlib.debug then
 				log(print .. "  Renurning false\n---------------------------------------------------------------------------------------------")
 			end
 			return false
 		else
-			if debug then
+			if ezlib.debug then
 				log(print .. "  Renurning:" .. ezlib.log.print(out, 0) .. "\n---------------------------------------------------------------------------------------------")
 			end
 			return out
@@ -572,7 +565,7 @@ function ezlib.recipe.get.list (value)
 			freturn = 1
 		end
 	end
-	if debug then	
+	if ezlib.debug then	
 		local print = ""
 		print = print .. "ezlib.recipes.get.list\n---------------------------------------------------------------------------------------------\n"
 		if type(list) == "table" then

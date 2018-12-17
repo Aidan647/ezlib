@@ -1,21 +1,14 @@
-ezlib.tbl = {}
-ezlib.hidden = {}
-ezlib.string = {}
-ezlib.log = {}
-
 function ezlib.log.print (tbl, indent)
-	local freturn = 0
+	local freturn = 1
 	if not indent then 
 		indent = 0 
-	elseif indent == 0 then
-		indent = 2
-		freturn = 1
+		freturn = 0
 	end
-	local toprint = string.rep(" ", indent) .. "{\r\n"
-	indent = indent + 4 
+	local toprint = "\n" .. string.rep("	", indent) .. "{\r\n"
+	indent = indent + 1 
 	if type(tbl) == "table" then
 		for k, v in pairs(tbl) do
-			toprint = toprint .. string.rep(" ", indent)
+			toprint = toprint .. string.rep("	", indent)
 			if (type(k) == "number") then
 				toprint = toprint .. "[" .. k .. "] = "
 			elseif (type(k) == "string") then
@@ -26,12 +19,12 @@ function ezlib.log.print (tbl, indent)
 			elseif (type(v) == "string") then
 				toprint = toprint .. "" .. v .. ",\r\n"
 			elseif (type(v) == "table") then
-				toprint = toprint .. ezlib.log.print(v, indent + 4) .. ",\r\n"
+				toprint = toprint .. ezlib.log.print(v, indent + 1) .. ",\r\n"
 			else
 				toprint = toprint .. "" .. tostring(v) .. ",\r\n"
 			end
 		end	
-		toprint = toprint .. string.rep(" ", indent - 4) .. "}"
+		toprint = toprint .. string.rep("	", indent - 1) .. "}"
 		if freturn == 0 then
 			log(toprint)
 		else
@@ -55,7 +48,7 @@ function ezlib.tbl.remove(list1, list2)
 		end
 		local z = 0
 		for x,ing in ipairs(list1) do
-			if type(list2) ~= "string" then
+			if type(list2) == "table" then
 				for y,ing2 in pairs(list2) do
 					if ing == ing2 then
 						table.remove(list3, (x - z))
@@ -74,13 +67,13 @@ function ezlib.tbl.remove(list1, list2)
 		else
 			print = print .. "  Removed string ".. list2 .. ".\n"
 		end
-		if debug then
+		if ezlib.debug then
 		print = print .. "  Returning:" .. ezlib.log.print(list1, 0)
 			log(print .. "  \n---------------------------------------------------------------------------------------------")
 		end
 		return list3
 	else
-	if debug then
+	if ezlib.debug then
 		print = print .. "  list2 is empty.\n  Returning:" .. ezlib.log.print(list1, 0)
 		log(print .. "\n---------------------------------------------------------------------------------------------")
 	end
@@ -140,7 +133,7 @@ function ezlib.tbl.add (list1, list2, list3, list4, list5)
 		table.insert(list, list5)
 		print = print .. "  Table_5 added as string\n"
 	end
-	if debug then
+	if ezlib.debug then
 		print = print .. "  Returning:\n" .. ezlib.log.print(list, 0)
 		log(print .. "\n---------------------------------------------------------------------------------------------")
 	end
@@ -174,7 +167,7 @@ function ezlib.string.add(string1, string2, string3, string4, string5)
 		string = string .. string5
 		print = print .. "  String_5 added as string\n"
 	end
-	if debug then
+	if ezlib.debug then
 		print = print .. "  Returning:\n      " .. string
 		log(print .. "\n---------------------------------------------------------------------------------------------")
 	end

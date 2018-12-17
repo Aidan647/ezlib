@@ -1,19 +1,12 @@
-ezlib.tech = {}
-ezlib.tech.add = {}
-ezlib.tech.find = {}
-ezlib.tech.remove = {}
-ezlib.tech.get = {}
-
-
 function ezlib.tech.add.unlock_recipe (value, frecipe)
 	local print = "ezlib.tech.add.unlock_recipe\n---------------------------------------------------------------------------------------------\n"
 	if data.raw.technology[value] then
 		table.insert(data.raw.technology[value].effects, {type = "unlock-recipe", recipe = frecipe})
-		if debug then
+		if ezlib.debug then
 			log(print .. "  Recipe " .. frecipe .. " added to technology " .. value .. "\n---------------------------------------------------------------------------------------------")
 		end
 	else
-		if debug then
+		if ezlib.debug then
 			log(print .. "  [Warning] Technology with name " .. value .. " not found\n---------------------------------------------------------------------------------------------")
 		else
 			log("[Warning] Technology with name " .. value .. " not found")
@@ -26,17 +19,17 @@ function ezlib.tech.add.unlock_modifer (value, ftype, fmodifier, fammo_category)
 	if data.raw.technology[value] == value then
 		if ftype == "ammo-damage" or ftype == "gun-speed" then
 			table.insert(data.raw.technology[value].effects, {type = ftype, ammo_category = fammo_category, modifier = fmodifier})	
-			if debug then		
+			if ezlib.debug then		
 				log(print .. "  Effect " .. ftype .. " with modifier " .. fmodifier .. " for ammo category " .. fammo_category .. " added to technology " .. value .. "\n---------------------------------------------------------------------------------------------")
 			end
 		else
 			table.insert(data.raw.technology[value].effects, {type = ftype, modifier = fmodifier})
-			if debug then
+			if ezlib.debug then
 				log(print .. "  Effect " .. ftype .. " with modifier " .. fmodifier .. " added to technology " .. value .. "\n---------------------------------------------------------------------------------------------")
 			end
 		end
 	else
-		if debug then
+		if ezlib.debug then
 			log(print .. "  [Warning] Technology with name " .. value .. " not found\n---------------------------------------------------------------------------------------------")
 		else
 			log("[Warning] Technology with name " .. value .. " not found")
@@ -48,11 +41,11 @@ function ezlib.tech.add.prerequisites (value, ftech)
 	local print = "ezlib.tech.add.prerequisites\n---------------------------------------------------------------------------------------------\n"
 	if data.raw.technology[value] and data.raw.technology[ftech] then
 		table.insert(data.raw.technology[value].prerequisites, ftech)
-		if debug then
+		if ezlib.debug then
 			log(print .. "  Prerequisites " .. ftech .. " added to technology " .. value .. "\n---------------------------------------------------------------------------------------------")
 		end
 	else
-		if debug then
+		if ezlib.debug then
 			log(print .. "  [Warning] Technology with name " .. value .. " or " .. ftech .. " not found\n---------------------------------------------------------------------------------------------")
 		else
 			log("[Warning] Technology with name " .. value .. " or " .. ftech .. " not found")
@@ -88,7 +81,7 @@ function ezlib.tech.find.unlock_recipe (value)
 		print = print .. "\n  Renurning:"
 		print = print .. ezlib.log.print(list, 0)
 	end
-	if debug then
+	if ezlib.debug then
 		log(print .. "\n---------------------------------------------------------------------------------------------")
 	end
 	return list
@@ -121,7 +114,7 @@ function ezlib.tech.find.unlock_modifer (value, fmodifier)
 		print = print .. "\n  Renurning:"
 		print = print .. ezlib.log.print(list, 0)
 	end
-	if debug then
+	if ezlib.debug then
 		log(print .. "\n---------------------------------------------------------------------------------------------")
 	end
 	return list
@@ -139,11 +132,11 @@ function ezlib.tech.remove.unlock_recipe (value, frecipe)
 				end
 			end
 		end
-		if debug then
+		if ezlib.debug then
 			log(print .. "\n---------------------------------------------------------------------------------------------")
 		end
 	else
-		if debug then
+		if ezlib.debug then
 			log(print .. "  [Warning] Technology with name " .. value .. " not found\n---------------------------------------------------------------------------------------------")
 		else
 			log("[Warning] Technology with name " .. value .. " not found")
@@ -167,11 +160,11 @@ function ezlib.tech.remove.unlock_modifer (value, ftype, fammo_category)
 				end
 			end
 		end
-		if debug then
+		if ezlib.debug then
 			log(print .. "\n---------------------------------------------------------------------------------------------")
 		end
 	else
-		if debug then
+		if ezlib.debug then
 			log(print .. "  [Warning] Technology with name " .. value .. " not found\n---------------------------------------------------------------------------------------------")
 		else
 			log("[Warning] Technology with name " .. value .. " not found")
@@ -188,11 +181,11 @@ function ezlib.tech.remove.prerequisites (value, ftech)
 				print = print .. "\n  Prerequisites " .. ftech .. " removed from technology " .. value
 			end
 		end
-		if debug then
+		if ezlib.debug then
 			log(print .. "\n---------------------------------------------------------------------------------------------")
 		end
 	else
-		if debug then
+		if ezlib.debug then
 			log(print .. "  [Warning] Technology with name " .. value .. " or " .. ftech .. " not found\n---------------------------------------------------------------------------------------------")
 		else
 			log("[Warning] Technology with name " .. value .. " or " .. ftech .. " not found")
@@ -248,7 +241,7 @@ function ezlib.tech.get.list (value)
 			freturn = 1
 		end
 	end
-	if debug then	
+	if ezlib.debug then	
 		local print = ""
 		print = print .. "ezlib.tech.get.list\n---------------------------------------------------------------------------------------------\n"
 		if type(list) == "table" then

@@ -1,6 +1,3 @@
-ezlib.entity = {}
-ezlib.entity.get = {}
-
 function ezlib.entity.get.list (ftype,value)
 	local freturn = 0
 	local list = {}
@@ -53,7 +50,7 @@ function ezlib.entity.get.list (ftype,value)
 			end
 		end
 	end
-	if debug then	
+	if ezlib.debug then	
 		local print = ""
 		print = print .. "ezlib.entity.get.list\n---------------------------------------------------------------------------------------------\n"
 		if ftype == nil then
@@ -81,5 +78,47 @@ function ezlib.entity.get.list (ftype,value)
 		return nil
 	else
 		return list
+	end
+end
+
+function ezlib.entity.add.flag (value, type, flag)
+	local print = "ezlib.entity.add.flag\n---------------------------------------------------------------------------------------------\n"
+	if data.raw[type][value] then
+		if data.raw[type][value].flags then
+			table.insert(data.raw[type][value].flags, flag)
+		else
+			data.raw[type][value].flags = flag
+		end
+		if ezlib.debug then
+			log(print .. "  Flag " .. flag .. " added to " .. value .. ".\n---------------------------------------------------------------------------------------------")
+		end
+	else
+		if ezlib.debug then
+			log(print .. "  [Warning] Entity with name " .. value .. " not found.\n---------------------------------------------------------------------------------------------")
+		else
+			log("  [Warning] Entity with name " .. value .. " not found.")
+		end
+	end
+end
+
+function ezlib.entity.remove.flag (value, type, flag)
+	local print = "ezlib.entity.remove.flag\n---------------------------------------------------------------------------------------------\n"
+	if data.raw[type][value] then
+		if data.raw[type][value].flags then
+			for i,v in ipairs(data.raw[type][value].flags) do
+				if data.raw[type][value].flags[i] == v then
+					table.remove(data.raw[type][value].flags, i)
+				end
+			end
+		end
+		if ezlib.debug then
+			log(print .. "  Flag " .. flag .. " removed from " .. value .. ".\n---------------------------------------------------------------------------------------------")
+		end
+	else
+		if ezlib.debug then
+			log(print .. "  [Warning] Entity with name " .. value .. " not found.\n---------------------------------------------------------------------------------------------")
+		else
+			log("  [Warning] Entity with name " .. value .. " not found.")
+		end
 	end
 end
